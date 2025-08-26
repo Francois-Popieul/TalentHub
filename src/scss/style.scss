@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+//## Colors
+$primary-100: #154D71;
+$primary-65: #9cb2c1;
+$primary-30: #cbd5dc;
+$secondary-100: #CFAB8D;
+$secondary-65: #CFAB8D65;
+$secondary-30: #CFAB8D30;
+$black: #0F0E0E;
+$white: #FDFDFD;
+$background: #F9F6F3;
+$gray-dark: #4C4C4C;
+$gray-light: #DADAD7;
+
+//## Typography
+$large-text-size: 2.25rem;
+$medium-text-size: 1.78rem;
+$small-text-size: 1.25rem;
+
+//## Break-points
+$breakpoint-sm: 600px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1400px;
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $background;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.header-icon {
+    width: 48px;
+    height: auto;
+}
+
+.brand-text {
+    font-size: $large-text-size;
+}
+
+.burger-menu {
+    width: 48px;
+    height: auto;
+    margin-right: 1rem;
+
+    &:hover {
+        scale: 1.1;
+    }
+}
+
+.white-button,
+.banner-button,
+.blue-button {
+    background-color: $background;
+    color: $black;
+    font-size: $small-text-size;
+    border-style: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+
+    &:hover {
+        scale: 1.1;
+        cursor: pointer;
+
+    }
+}
+
+.banner-button {
+    margin: 0 auto;
+}
+
+.blue-button {
+    background-color: $primary-100;
+    color: $white;
+}
+
+.row-flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    background-color: $primary-100;
+    box-sizing: border-box;
+}
+
+.banner-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 5%;
+    padding: 1rem;
+    width: 90%;
+    height: 90%;
+    background-color: $primary-65;
+    box-sizing: border-box;
+}
+
+.banner-title,
+.banner-paragraph {
+    font-size: $large-text-size;
+    color: $white;
+    text-align: center;
+}
+
+.banner-paragraph {
+    font-size: $medium-text-size;
+    margin: 0.5rem 0;
+}
+
+.right-aligned-container {
+    text-align: right;
+    margin-right: 1rem;
+}
+
+.home-subtitle {
+    color: $black;
+    margin: 1rem 0 1rem 1rem;
+}
+
+@media screen and (min-width: 700px) {
+    .burger-menu {
+        display: none;
+    }
+
+    .hidden {
+        display: block;
+    }
+}
