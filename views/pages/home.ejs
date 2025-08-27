@@ -2,8 +2,29 @@
     <%- include("../partials/banner.ejs") %>
 
         <h2 class="home-subtitle">Les dernières annonces</h2>
+
+        <section class="recent-notice-container">
+            <% recentNotices.forEach((notice)=> { %>
+                <div class="notice-preview">
+                    <p class="notice-preview-title">
+                        <%= notice.title %>
+                    </p>
+                    <p class="notice-preview-description">
+                        <%= notice.description %>
+                    </p>
+                    <div class="notice-preview-bottom-container">
+                        <% notice.skills.forEach((skill)=> { %>
+                            <p class="notice-preview-skills">
+                                <%= skill %>
+                            </p>
+                            <% }) %>
+                    </div>
+                </div>
+                <% }) %>
+        </section>
+
         <div class="right-aligned-container">
-            <a href="../noticeList"><button class="blue-button">Consulter toutes les annonces</button></a>
+            <a href="/notices"><button class="blue-button">Consulter toutes les annonces</button></a>
         </div>
 
         <%- include("../partials/footer.ejs") %>
