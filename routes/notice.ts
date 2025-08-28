@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { NoticeController } from "../controllers/NoticeController";
+
+// Create a notice router
 const noticeRouter = Router();
 
 // Display all job offers
@@ -23,18 +25,19 @@ noticeRouter.post("/", (request, response) => {
 
 // Display a specific job offer
 noticeRouter.get("/:id", (request, response) => {
+  console.log("Controleur de l'annonce sélectionnée appelé !");  
   const controller = new NoticeController(request, response);
   controller.readNotice();
 });
 
 // Edit a job offer
-noticeRouter.put("/:id", (request, response) => {
+noticeRouter.post("/edit/:id", (request, response) => {
   const controller = new NoticeController(request, response);
   controller.editNotice();
 });
 
 // Delete a job offer
-noticeRouter.delete("/:id", (request, response) => {
+noticeRouter.post("/delete/:id", (request, response) => {
   const controller = new NoticeController(request, response);
   controller.deleteNotice();
 });

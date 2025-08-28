@@ -1,10 +1,15 @@
-F* {
+* {
   margin: 0;
   padding: 0;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background-color: #e6d8cc;
 }
 
 .header {
@@ -168,12 +173,45 @@ a {
   background-color: #eee7e2;
 }
 
+.notice-view-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 95%;
+  background-color: #F9F6F3;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 95%;
+}
+
+fieldset {
+  margin: 1rem;
+}
+
+label,
+input,
+select {
+  width: 100%;
+  height: auto;
+  margin: 0.2rem auto;
+}
+
 @media screen and (min-width: 700px) {
   .burger-menu {
     display: none;
   }
   .hidden {
     display: block;
+  }
+  .form-container {
+    width: 75%;
+  }
+  .notice-view-container {
+    width: 75%;
   }
 }
 

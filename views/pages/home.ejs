@@ -5,21 +5,23 @@
 
         <section class="recent-notice-container">
             <% recentNotices.forEach((notice)=> { %>
-                <div class="notice-preview">
-                    <p class="notice-preview-title">
-                        <%= notice.title %>
-                    </p>
-                    <p class="notice-preview-description">
-                        <%= notice.description %>
-                    </p>
-                    <div class="notice-preview-bottom-container">
-                        <% notice.skills.forEach((skill)=> { %>
-                            <p class="notice-preview-skills">
-                                <%= skill %>
-                            </p>
-                            <% }) %>
+                <a href="../notices/<%= notice.id %>">
+                    <div class="notice-preview">
+                        <p class="notice-preview-title">
+                            <%= notice.title %>
+                        </p>
+                        <p class="notice-preview-description">
+                            <%= notice.description %>
+                        </p>
+                        <div class="notice-preview-bottom-container">
+                            <% notice.skills.forEach((skill)=> { %>
+                                <p class="notice-preview-skills">
+                                    <%= skill %>
+                                </p>
+                                <% }) %>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <% }) %>
         </section>
 

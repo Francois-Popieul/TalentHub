@@ -2,12 +2,13 @@ import { Router } from "express";
 import globalRouter from "./globals";
 import noticeRouter from "./notice";
 
+// Create the main router
 const router = Router();
 
-// On lie le router "globals" au router principale
+// Link the global router to the main router
 router.use(globalRouter);
 
-// On lie le router spécial "book" au router principale
+// Link the notice router to the main router
 router.use('/notices', noticeRouter);
 
 export default router;

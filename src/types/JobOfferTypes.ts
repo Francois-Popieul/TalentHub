@@ -5,6 +5,7 @@ export type JobData = {
 };
 
 export type JobOffer = {
+  id: number;
   title: string;
   description: string;
   skills: string[];

@@ -1,18 +1,28 @@
-import z, { string } from "zod";
+import z, { parse, string } from "zod";
 import { Controller } from "../libs/Controller";
+import { JobOffer } from "../src/types/JobOfferTypes";
+import { jobOffers } from "../src/data";
 
 export class NoticeController extends Controller {
   public browseNotices() {
     console.log("Page des annonces affichée !")
-    this.response.render("pages/noticeList.ejs");
+    const noticeList: JobOffer[] = jobOffers;
+
+    this.response.render("pages/noticeList.ejs", { notices: noticeList });
   }
 
   public readNotice() {
-    console.log("Page des annonces affichée !")
+    console.log("Page de l'annonce sélectionnée affichée !")
+    const requestedNotice: JobOffer | undefined = jobOffers.find((jobOffer) => {
+      return jobOffer.id === parseInt(this.request.params.id);
+    });
+    console.log(requestedNotice);
+
+    this.response.render("pages/notice.ejs", { notice: requestedNotice });
   }
 
   public createNotice() {
-    console.log("Page des annonces affichée !")
+    console.log("Page de création d'une annonce affichée !")
   }
 
   public addNotice() {

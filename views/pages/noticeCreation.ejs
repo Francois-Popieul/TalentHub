@@ -1,4 +1,54 @@
 <%- include("../partials/head.ejs") %>
 
+    <section class="form-container">
+        <div class="right-aligned-container">
+            <button type"button" class="blue-button">Annuler</button>
+        </div>
+        <h1>Création d'une annonce</h1>
+        <form action="" method="post" class="notice-form">
+            <fieldset>
+                <div>
+                    <label for="notice-title">Titre de l'annonce</label>
+                    <input type="text" name="notice-title" id="notice-title">
+                </div>
+                <div>
+                    <label for="notice-description">Description de l'offre</label>
+                    <textarea id="notice-description" name="notice-description" rows="20" cols="127">
+</textarea>
+                </div>
+                <div>
+                    <label for="notice-skills">Compétences recherchées</label>
+                    <select type="text" name="notice-skills" id="notice-skills"></select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <label for="notice-mission-type">Type de mission</label>
+                    <select type="text" name="notice-mission-type" id="notice-mission-type"></select>
+                </div>
+                <div>
+                    <label for="notice-onboarding-date">Date d'onboarding</label>
+                    <select type="text" name="notice-onboarding-date" id="notice-onboarding-date"></select>
+                </div>
+                <div>
+                    <label for="notice-salary">Salaire</label>
+                    <select type="text" name="notice-salary" id="notice-salary"></select>
+                </div>
+                <div>
+                    <label for="notice-salary-unit">Unité de salaire</label>
+                    <select type="text" name="notice-salary-unit" id="notice-salary-unit"></select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password">
+                    <p>Un mot de passe est requis pour administrer l'annonce après sa publication. Assurez-vous de le
+                        conserver précieusement</p>
+                </div>
+            </fieldset>
+            <button type"submit" class="blue-button">Créer l'annonce</button>
+        </form>
+    </section>
 
     <%- include("../partials/footer.ejs") %>

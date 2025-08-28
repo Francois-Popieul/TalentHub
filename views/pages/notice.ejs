@@ -1,4 +1,28 @@
 <%- include("../partials/head.ejs") %>
+    <section>
+        <div>
+            <a href="/notices/edit<%= notice.id %>"><button type="button" class="blue-button">Éditer</button></a>
+            <a href="/notices/delete<%= notice.id %>"><button type="button" class="blue-button">Supprimer</button></a>
+        </div>
+        <div class="notice-view-container">
+            <h2>
+                <%= notice.title %>
+            </h2>
 
+            <div class="notice-preview-bottom-container">
+                <% notice.skills.forEach((skill)=> { %>
+                    <p class="notice-preview-skills">
+                        <%= skill %>
+                    </p>
+                    <% }) %>
+            </div>
 
+            <p>
+                <%= notice.start_date.toLocaleDateString(); %>
+            </p>
+            <p>
+                <%= notice.description %>
+            </p>
+        </div>
+    </section>
     <%- include("../partials/footer.ejs") %>
