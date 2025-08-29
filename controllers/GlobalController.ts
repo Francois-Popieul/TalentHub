@@ -9,5 +9,5 @@ export class GlobalsController extends Controller {
     }).slice(0,3);
     
     this.response.render("pages/home", {recentNotices: recentNotices});
-  }
+  }  
 }

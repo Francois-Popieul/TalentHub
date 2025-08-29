@@ -1,8 +1,8 @@
 <%- include("../partials/head.ejs") %>
     <section>
         <div>
-            <a href="/notices/edit<%= notice.id %>"><button type="button" class="blue-button">Éditer</button></a>
-            <a href="/notices/delete<%= notice.id %>"><button type="button" class="blue-button">Supprimer</button></a>
+            <a href="/notices/edit/<%= notice.id %>"><button type="button" class="blue-button">Éditer</button></a>
+            <a href="/notices/delete/<%= notice.id %>"><button type="button" class="blue-button">Supprimer</button></a>
         </div>
         <div class="notice-view-container">
             <h2>

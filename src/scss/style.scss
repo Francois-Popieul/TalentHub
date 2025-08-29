@@ -21,12 +21,6 @@ $large-text-size: 2.25rem;
 $medium-text-size: 1.78rem;
 $small-text-size: 1.25rem;
 
-//## Break-points
-$breakpoint-sm: 600px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1400px;
-
 a {
     text-decoration: none;
     color: inherit;
@@ -63,6 +57,26 @@ body {
     &:hover {
         scale: 1.1;
     }
+}
+
+.burger-menu-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: $background;
+    max-height: 0;
+    text-align: right;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    top: 0;
+    right: 0;
+}
+
+.burger-menu-links.active {
+    max-height: 200px;
+    opacity: 1;
 }
 
 .white-button,
@@ -154,18 +168,18 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 1rem;
+    gap: 16px;
+    margin: 1rem;
 }
 
 .notice-preview {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     width: 300px;
-    background-color: $gray-light;
-    padding: 0.25rem;
+    background-color: $background;
+    padding: 0.5rem;
     height: 200px;
 }
 
@@ -187,8 +201,8 @@ body {
 .notice-preview-bottom-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -206,15 +220,38 @@ body {
     background-color: $background;
 }
 
+.notice-creation-page-container {
+    display: block;
+    margin: 1rem auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.cancel-button-container {
+    text-align: right;
+    margin-right: 2.5%;
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
     margin: 1rem auto;
     width: 95%;
+    background-color: $background;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.form-notice-description {
+    height: 10rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
 }
 
 fieldset {
     margin: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 label,
@@ -224,10 +261,27 @@ select {
     height: auto;
     margin: 0.2rem auto;
 }
+label {
+    font-weight: 600;
+}
 
+input, select {
+    margin-bottom: 0.5rem;
+}
+
+.notice-addition-success-message {
+    font-size: 2rem;
+    text-align: center;
+    width: 50%;
+    margin: 2rem auto;
+}
 
 @media screen and (min-width: 700px) {
     .burger-menu {
+        display: none;
+    }
+
+    .burger-menu-link-container {
         display: none;
     }
 
@@ -240,6 +294,10 @@ select {
     }
 
     .notice-view-container {
-    width: 75%;
-}
+        width: 75%;
+    }
+
+    .cancel-button-container {
+        margin-right: 12.5%;
+    }
 }

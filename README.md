@@ -1,27 +1,25 @@
-# 📣 TalentConnect – Site de petites annonces pour recruteurs
+# 📣 TalentHub – Site de petites annonces pour recruteurs
 
-Bienvenue sur le dépôt GitHub du projet **TalentConnect**, une application web responsive développée dans le cadre de ma formation de développeur Web. Ce projet a été réalisé en solo sur 5 demi-journées, selon les spécifications du brief pédagogique.
+Bienvenue sur le dépôt GitHub du projet **TalentHub**, une application web responsive développée dans le cadre de ma formation de développeur Web. Ce projet a été réalisé en solo sur 5 demi-journées, selon les spécifications du brief pédagogique.
 
 ## 🎯 Objectif du projet
 
-Développer une application web dynamique permettant aux employeurs de publier, consulter, modifier et supprimer des petites annonces de recrutement. Le projet respecte une architecture **MVC** complète, avec un backend en TypeScript, une base de données, et une interface frontend mobile-first.
+Développer une application web dynamique permettant aux employeurs de publier, consulter, modifier et supprimer des petites annonces de recrutement. Le projet respecte une architecture **MVC** complète, avec un backend en TypeScript, une base de données et une interface frontend mobile-first.
 
 ## 🛠️ Technologies utilisées
 
 - **Frontend** : HTML5, CSS3, TypeScript
 - **Backend** : TypeScript (Node.js), architecture MVC
-- **Base de données** : SQLite / JSON (selon implémentation)
-- **Outils** : Git, GitHub, GitHub Pages
-- **Tests** : Plans de test manuels pour validation des formulaires
+- **Outils** : Git, GitHub, Vercel
 
 
 ## 🔄 Fonctionnalités BREAD
 
-- **Browse** : Liste des annonces disponibles
-- **Read** : Détail d’une annonce
-- **Edit** : Modification d’une annonce existante
-- **Add** : Création d’une nouvelle annonce
-- **Delete** : Suppression d’une annonce
+- **Browse** : liste des annonces disponibles
+- **Read** : détail d’une annonce
+- **Edit** : modification d’une annonce existante
+- **Add** : création d’une nouvelle annonce
+- **Delete** : suppression d’une annonce
 
 ## 📱 Responsive Design
 
@@ -34,11 +32,10 @@ Développer une application web dynamique permettant aux employeurs de publier, 
 - Champs obligatoires avec contraintes HTML5
 - Validation côté client en TypeScript
 - Messages d’erreur clairs et visibles
-- Sécurité des entrées (anti-injection, nettoyage des données)
 
 ## 🚀 Mise en ligne
 
-- Instance déployée sur **GitHub Pages**  
+- Instance déployée sur **Vercel**  
 👉 [Lien vers l'application en ligne](https://ton-nom-utilisateur.github.io/talentconnect)
 
 ## 📌 Modalités de versionnement
