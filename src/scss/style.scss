@@ -33,10 +33,11 @@ body {
 .header {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: space-around;
     background-color: $background;
     padding: 0 1rem;
+    width: 100vw;
     box-sizing: border-box;
 }
 
@@ -57,26 +58,6 @@ body {
     &:hover {
         scale: 1.1;
     }
-}
-
-.burger-menu-link-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    background-color: $background;
-    max-height: 0;
-    text-align: right;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
-    top: 0;
-    right: 0;
-}
-
-.burger-menu-links.active {
-    max-height: 200px;
-    opacity: 1;
 }
 
 .white-button,
@@ -106,10 +87,48 @@ body {
     color: $white;
 }
 
-.row-flex-container {
+.burger-menu-flex-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.burger-menu-link-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 250px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    background-color: $background;
+    overflow: hidden;
+}
+
+.burger-menu-links.active {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.row-flex-container,
+.link-row-flex-container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.link-row-flex-container {
+    display: none;
+    align-items: end;
+    justify-content: flex-end;
 }
 
 .hidden {
@@ -261,11 +280,13 @@ select {
     height: auto;
     margin: 0.2rem auto;
 }
+
 label {
     font-weight: 600;
 }
 
-input, select {
+input,
+select {
     margin-bottom: 0.5rem;
 }
 
@@ -277,16 +298,12 @@ input, select {
 }
 
 @media screen and (min-width: 700px) {
-    .burger-menu {
+    .burger-menu-flex-container {
         display: none;
     }
 
-    .burger-menu-link-container {
-        display: none;
-    }
-
-    .hidden {
-        display: block;
+    .link-row-flex-container {
+        display: flex;
     }
 
     .form-container {
