@@ -8,21 +8,21 @@
             <form action="/notices" method="post" class="notice-form">
                 <fieldset>
                     <div>
-                        <label for="notice-title">Titre de l'annonce</label>
-                        <input type="text" name="notice-title" id="notice-title" required>
+                        <label for="notice_title">Titre de l'annonce</label>
+                        <input type="text" name="notice_title" id="notice_title" required>
                     </div>
                     <div>
-                        <label for="notice-description">Description de l'offre</label>
-                        <textarea id="notice-description" name="notice-description" class="form-notice-description"
+                        <label for="notice_description">Description de l'offre</label>
+                        <textarea id="notice_description" name="notice_description" class="form-notice-description"
                             required>
 </textarea>
                     </div>
                     <div>
-                        <label for="notice-skills">Compétences recherchées</label>
-                        <select type="text" name="notice-skills" id="notice-skills" required>
+                        <label for="notice_skills">Compétences recherchées</label>
+                        <select type="text" name="notice_skills" id="notice_skills" required>
                             <option value="">--Choisissez une compétence--</option>
                             <% skills.forEach((skill)=> { %>
-                                <option value="skill.value">
+                                <option value="<%= skill.value %>">
                                     <%= skill.label %>
                                 </option>
                                 <% }) %>
@@ -31,31 +31,31 @@
                 </fieldset>
                 <fieldset>
                     <div>
-                        <label for="notice-mission-type">Type de mission</label>
-                        <select type="text" name="notice-mission-type" id="notice-mission-type" required>
+                        <label for="notice_mission_type">Type de mission</label>
+                        <select type="text" name="notice_mission_type" id="notice_mission_type" required>
                             <option value="">--Choisissez un type de mission--</option>
                             <% missions.forEach((mission)=> { %>
-                                <option value="mission.value">
+                                <option value="<%= mission.value %>">
                                     <%= mission.label %>
                                 </option>
                                 <% }) %>
                         </select>
                     </div>
                     <div>
-                        <label for="notice-onboarding-date">Date d'onboarding</label>
-                        <input type="date" id="notice-onboarding-date" name="notice-onboarding-date" min="2025-08-25"
+                        <label for="notice_onboarding_date">Date d'onboarding</label>
+                        <input type="date" id="notice_onboarding_date" name="notice_onboarding_date" min="2025-08-25"
                             max="2030-12-31" required />
                     </div>
                     <div>
-                        <label for="notice-salary">Salaire</label>
-                        <input type="text" name="notice-salary" id="notice-salary" required />
+                        <label for="notice_salary">Salaire</label>
+                        <input type="text" name="notice_salary" id="notice_salary" required />
                     </div>
                     <div>
-                        <label for="notice-salary-unit">Unité de salaire</label>
-                        <select type="text" name="notice-salary-unit" id="notice-salary-unit" required>
+                        <label for="notice_salary_unit">Unité de salaire</label>
+                        <select type="text" name="notice_salary_unit" id="notice_salary_unit" required>
                             <option value="">--Choisissez une unité de salaire--</option>
                             <% units.forEach((unit)=> { %>
-                                <option value="unit.value">
+                                <option value="<%= unit.value %>">
                                     <%= unit.label %>
                                 </option>
                                 <% }) %>
@@ -66,7 +66,8 @@
                     <div>
                         <label for="password">Mot de passe</label>
                         <input type="password" name="password" id="password" required>
-                        <p>Un mot de passe est requis pour administrer l'annonce après sa publication. Assurez-vous de le conserver précieusement</p>
+                        <p>Un mot de passe est requis pour administrer l'annonce après sa publication. Assurez-vous de
+                            le conserver précieusement</p>
                     </div>
                 </fieldset>
                 <button type"submit" class="blue-button">Créer l'annonce</button>

@@ -12,7 +12,6 @@ Développer une application web dynamique permettant aux employeurs de publier, 
 - **Backend** : TypeScript (Node.js), architecture MVC
 - **Outils** : Git, GitHub, Vercel
 
-
 ## 🔄 Fonctionnalités BREAD
 
 - **Browse** : liste des annonces disponibles
@@ -36,7 +35,7 @@ Développer une application web dynamique permettant aux employeurs de publier, 
 ## 🚀 Mise en ligne
 
 - Instance déployée sur **Vercel**  
-👉 [Lien vers l'application en ligne](https://ton-nom-utilisateur.github.io/talentconnect)
+  👉 [Lien vers l'application en ligne](https://ton-nom-utilisateur.github.io/talentconnect)
 
 ## 📌 Modalités de versionnement
 
@@ -47,6 +46,7 @@ Développer une application web dynamique permettant aux employeurs de publier, 
 ## 📚 Cahier des charges
 
 Le projet respecte les spécifications fournies dans le cahier des charges :
+
 - Pas de framework JS ni bibliothèque externe (ex. Bootstrap)
 - Architecture MVC complète
 - Intégration continue manuelle via tests et validations
@@ -59,4 +59,3 @@ Le projet respecte les spécifications fournies dans le cahier des charges :
 ---
 
 > Ce projet illustre mes compétences en développement web fullstack, ma capacité à structurer un projet, à respecter un cahier des charges, et à produire un code maintenable et documenté.
-

@@ -3,14 +3,16 @@ import { Controller } from "../libs/Controller";
 import { JobData, JobOffer } from "../src/types/JobOfferTypes";
 import { jobOffers } from "../src/data";
 import { missionData } from "../src/data";
-import { GlobalsController } from "./GlobalController";
 
 export class NoticeController extends Controller {
   public browseNotices() {
     console.log("Page des annonces affichée !")
     const noticeList: JobOffer[] = jobOffers;
-
-    this.response.render("pages/noticeList.ejs", { notices: noticeList });
+    const enrichedNotices = noticeList.map(notice => ({
+      ...notice,
+      skillLabels: this.getSkillNames(notice.skills)
+    }));    
+    this.response.render("pages/noticeList.ejs", { notices: enrichedNotices });
   }
 
   public readNotice() {
@@ -18,9 +20,14 @@ export class NoticeController extends Controller {
     const requestedNotice: JobOffer | undefined = jobOffers.find((jobOffer) => {
       return jobOffer.id === parseInt(this.request.params.id);
     });
-    console.log(requestedNotice);
-
-    this.response.render("pages/notice.ejs", { notice: requestedNotice });
+    if (requestedNotice) {
+      const enrichedNotice = {...requestedNotice, skillLabels: this.getSkillNames(requestedNotice.skills)}
+      console.log(enrichedNotice);      
+      this.response.render("pages/notice.ejs", { notice: enrichedNotice });
+    }
+    else {
+      this.response.status(404).render("errors/404.ejs");
+    }
   }
 
   public getRecentNotices() {
@@ -43,7 +50,18 @@ export class NoticeController extends Controller {
   }
 
   public addNotice() {
-    console.log("Ajout d'une annonce demandée par l'utilisateur !")
+    const newOffer: JobOffer = {
+      id: jobOffers.length + 1,
+      title: this.request.body.notice_title,
+      description: this.request.body.notice_description,
+      skills: [this.request.body.notice_skills],
+      type: this.request.body.notice_mission_type,
+      start_date: new Date(this.request.body.notice_onboarding_date),
+      salary: this.request.body.notice_salary,
+      salary_unit: this.request.body.notice_salary_unit,
+      password: this.request.body.password,
+    }
+    jobOffers.push(newOffer);
     this.response.status(200).render("pages/noticeAdditionSuccess");
   }
 
@@ -66,4 +84,30 @@ export class NoticeController extends Controller {
 
     this.response.render("pages/noticeDeletion.ejs", { notice: requestedNotice });
   }
+
+  public getSkillNames(values: string[]): string[] {
+    return values.map(value => {
+      const skill = missionData.skills.find(skill => skill.value === value);
+      return skill ? skill.label : "Compétence inconnue";
+    });
+  }
+
+  public getMissionType(value: string): string {
+    for (const type of missionData.missionTypes) {
+      if (type.value === value) {
+        return type.label;
+      }
+    }
+    return "Type de mission inconnu";
+  }
+
+  public getSalaryUnit(value: string): string {
+    for (const unit of missionData.salaryUnits) {
+      if (unit.value === value) {
+        return unit.label;
+      }
+    }
+    return "Unité inconnue";
+  }
 }
+
