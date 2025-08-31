@@ -1,4 +1,4 @@
-import z, { parse, string } from "zod";
+import { z } from "zod";
 import { Controller } from "../libs/Controller";
 import { JobData, JobOffer } from "../src/types/JobOfferTypes";
 import { jobOffers } from "../src/data";
@@ -11,7 +11,7 @@ export class NoticeController extends Controller {
     const enrichedNotices = noticeList.map(notice => ({
       ...notice,
       skillLabels: this.getSkillNames(notice.skills)
-    }));    
+    }));
     this.response.render("pages/noticeList.ejs", { notices: enrichedNotices });
   }
 
@@ -21,8 +21,8 @@ export class NoticeController extends Controller {
       return jobOffer.id === parseInt(this.request.params.id);
     });
     if (requestedNotice) {
-      const enrichedNotice = {...requestedNotice, skillLabels: this.getSkillNames(requestedNotice.skills)}
-      console.log(enrichedNotice);      
+      const enrichedNotice = { ...requestedNotice, skillLabels: this.getSkillNames(requestedNotice.skills) }
+      console.log(enrichedNotice);
       this.response.render("pages/notice.ejs", { notice: enrichedNotice });
     }
     else {
@@ -46,10 +46,33 @@ export class NoticeController extends Controller {
       skills: skillList,
       missions: missionTypes,
       units: salaryUnits,
+      errors: {},
+      values: {},
     });
   }
 
   public addNotice() {
+
+    const verificationSchema = z.object({
+      title: z.string().min(10),
+      description: z.string().min(50).max(1000),
+      skills: z.string().array(),
+      type: z.string(),
+      start_date: z.coerce.date(),
+      salary: z.coerce.number(),
+      salary_unit: z.string().min(2).max(20),
+      password: z.string().refine(validatePassword),
+    });
+
+    function validatePassword(password: string) {
+      if (password.length >= 12) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+
     const newOffer: JobOffer = {
       id: jobOffers.length + 1,
       title: this.request.body.notice_title,
@@ -61,8 +84,24 @@ export class NoticeController extends Controller {
       salary_unit: this.request.body.notice_salary_unit,
       password: this.request.body.password,
     }
+    const result = verificationSchema.safeParse(newOffer);
+    if (!result.success) {
+      const errors = z.treeifyError(result.error);
+      const skillList: object[] = missionData.skills;
+      const missionTypes: object[] = missionData.missionTypes;
+      const salaryUnits: object[] = missionData.salaryUnits;
+      this.response.render("pages/noticeCreation.ejs", {
+        skills: skillList,
+        missions: missionTypes,
+        units: salaryUnits,
+        errors: errors.properties,
+        values: this.request.body,
+      });
+      return;
+    }
+
     jobOffers.push(newOffer);
-    this.response.status(200).render("pages/noticeAdditionSuccess");
+    this.response.render("/noticeAdditionSuccess.ejs");
   }
 
   public editNotice() {

@@ -1,7 +1,7 @@
 <%- include("../partials/head.ejs") %>
     <div class="notice-creation-page-container">
         <div class="cancel-button-container">
-            <a href="/"><button type"button" class="blue-button">Annuler</button></a>
+            <a href="/"><button type="button" class="blue-button">Annuler</button></a>
         </div>
         <section class="form-container">
             <h1>Création d'une annonce</h1>
@@ -9,13 +9,25 @@
                 <fieldset>
                     <div>
                         <label for="notice_title">Titre de l'annonce</label>
-                        <input type="text" name="notice_title" id="notice_title" required>
+                        <input type="text" name="notice_title" id="notice_title"
+                            value="<%= values.notice_title || '' %>" required>
+                        <% if (errors?.title?.errors?.length) { %>
+                            <p class="form-error">
+                                <%= errors.title.errors[0] %>
+                            </p>
+                            <% } %>
                     </div>
                     <div>
                         <label for="notice_description">Description de l'offre</label>
                         <textarea id="notice_description" name="notice_description" class="form-notice-description"
                             required>
+                        <%= values?.notice_description || '' %>
 </textarea>
+                        <% if (errors?.description?.errors?.length) { %>
+                            <p class="form-error">
+                                <%= errors.description.errors[0] %>
+                            </p>
+                            <% } %>
                     </div>
                     <div>
                         <label for="notice_skills">Compétences recherchées</label>
@@ -27,6 +39,11 @@
                                 </option>
                                 <% }) %>
                         </select>
+                        <% if (errors?.skills) { %>
+                            <p class="form-error">
+                                <%= errors.skills.message %>
+                            </p>
+                            <% } %>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -40,15 +57,31 @@
                                 </option>
                                 <% }) %>
                         </select>
+                        <% if (errors?.type?.errors?.length) { %>
+                            <p class="form-error">
+                                <%= errors.type.errors[0] %>
+                            </p>
+                            <% } %>
                     </div>
                     <div>
                         <label for="notice_onboarding_date">Date d'onboarding</label>
                         <input type="date" id="notice_onboarding_date" name="notice_onboarding_date" min="2025-08-25"
-                            max="2030-12-31" required />
+                            max="2030-12-31" value="<%= values.notice_onboarding_date || '' %>" equired />
+                        <% if (errors?.start_date?.errors?.length) { %>
+                            <p class="form-error">
+                                <%= errors.start_date.errors[0] %>
+                            </p>
+                            <% } %>
                     </div>
                     <div>
                         <label for="notice_salary">Salaire</label>
-                        <input type="text" name="notice_salary" id="notice_salary" required />
+                        <input type="text" name="notice_salary" id="notice_salary"
+                            value="<%= values.notice_salary || '' %>" required />
+                        <% if (errors?.salary?.errors?.length) { %>
+                            <p class="form-error">
+                                <%= errors.salary.errors[0] %>
+                            </p>
+                            <% } %>
                     </div>
                     <div>
                         <label for="notice_salary_unit">Unité de salaire</label>
@@ -60,17 +93,29 @@
                                 </option>
                                 <% }) %>
                         </select>
+                        <% if (errors?.salary_unit?.errors?.length) { %>
+                            <p class="form-error">
+                                <%= errors.salary_unit.errors[0] %>
+                            </p>
+                            <% } %>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div>
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="password" required>
-                        <p>Un mot de passe est requis pour administrer l'annonce après sa publication. Assurez-vous de
-                            le conserver précieusement</p>
+                        <input type="password" name="password" id="password" value="<%= values.password || '' %>"
+                            required>
+                        <% if (errors?.password?.errors?.length) { %>
+                            <p class="form-error">
+                                <%= errors.password.errors[0] %>
+                            </p>
+                            <% } %>
+                                <p>Un mot de passe est requis pour administrer l'annonce après sa publication.
+                                    Assurez-vous de
+                                    le conserver précieusement</p>
                     </div>
                 </fieldset>
-                <button type"submit" class="blue-button">Créer l'annonce</button>
+                <button type="submit" class="blue-button">Créer l'annonce</button>
             </form>
         </section>
     </div>

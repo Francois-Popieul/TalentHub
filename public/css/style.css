@@ -250,6 +250,14 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.form-error {
+  display: block;
+  width: 100%;
+  color: red;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
 fieldset {
   margin: 1rem;
   padding: 1rem;
@@ -273,7 +281,8 @@ select {
   margin-bottom: 0.5rem;
 }
 
-.notice-addition-success-message {
+.notice-addition-success-message,
+.error-message {
   font-size: 2rem;
   text-align: center;
   width: 50%;
