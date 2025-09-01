@@ -101,7 +101,7 @@ export class NoticeController extends Controller {
     }
 
     jobOffers.push(newOffer);
-    this.response.render("/noticeAdditionSuccess.ejs");
+    this.response.render("pages/noticeAdditionSuccess.ejs");
   }
 
   public editNotice() {
